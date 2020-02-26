@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Api estatica de Google</title>
+    <style>
+      #mapa {
+        width: 100%;
+        height: 350px;
+        background-color: #efefef;
+      }
+    </style>
+</head>
+<body>
+
+    <p>Haz clic para obtener las coordenadas de tu dispositivo</p>
+    <button onclick="obtieneUbicacion()">Obtener Coordenadas</button>
+    <p id="mensaje"></p>
+
+    <div id="mapa"></div>
+    
+    <script>
+    var x = document.getElementById("mensaje");
+    
+    function obtieneUbicacion() {
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(muestraPosicion);
+      } else { 
+        x.innerHTML = "El navegador no dispone de geolocalización";
+      }
+    }
+    
+    function muestraPosicion(posicion) {
+      var coordenadas = 23.076059 + "," + -109.723106;
+      var imagenurl = "https://maps.googleapis.com/maps/api/staticmap?center=" + coordenadas + "&zoom=20&size=400x400&sensor=false&key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA";
+      document.getElementById("mapa").innerHTML = "<img src='"+imagenurl+"'>";
+    }
+
+    </script>
+    
+</body>
+</html>
