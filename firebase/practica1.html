@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+     <h1>Lista de productos</h1>
+
+     <form id="fora">
+         <input type="text" name="nombre" placeholder="Nombre">
+         <input type="text" name="codigo" placeholder="Codigo">
+         <button type="submit">Agregar</button>
+     </form>
+    
+     <ul id="Lista"></ul>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDL1PbOFL2RTnurb1RixMMvou--avZdSBo",
+    authDomain: "sistemasgeo67410.firebaseapp.com",
+    databaseURL: "https://sistemasgeo67410.firebaseio.com",
+    projectId: "sistemasgeo67410",
+    storageBucket: "sistemasgeo67410.appspot.com",
+    messagingSenderId: "932138603613",
+    appId: "1:932138603613:web:e7d2d5284884239aeee9b4"
+  };
+  // Initialize Firebase
+  constdb = firebase.initializeApp(firebaseConfig);
+  const productoslista = document.querySelector("#Lista")
+</script>
+</body>
+</html>
