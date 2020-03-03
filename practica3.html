@@ -7,31 +7,22 @@
     <title>Obtiene Coordenadas</title>
 </head>
 <body>
-
   <p>Haz clic para obtener las coordenadas de tu dispositivo</p>
-
   <button onclick="getLocation()">Obtener Coordenadas</button>
-  
   <p id="demo"></p>
-  
   <script>
   var x = document.getElementById("demo");
-  
   function getLocation() {
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
       x.innerHTML = "El navegador no dispone la capacidad de geolocalización";
     }
   }
-  
   function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
   }
   </script>
-
-    
 </body>
 </html>
