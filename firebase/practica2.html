@@ -1,0 +1,191 @@
+<html>
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireBase Practica 2</title>
+
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-firestore.js"></script>
+    <script src="https://kit.fontawesome.com/725910d27b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <style>
+        h3{
+            font-size: 30px;
+        }
+        body {
+            background-image: url("https://wallpaperaccess.com/full/1292829.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0px;
+        }
+        div{
+            background-image: url("https://wallpaperaccess.com/full/1292829.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            margin: 0px;    
+        }
+        form{
+            background-color: rgb(153, 152, 152);
+        }
+        input{
+            font-size: 100px;
+        }
+        ul {
+        list-style-type: none;
+        margin: 50;
+        padding: 0;
+        overflow: hidden;
+
+        }
+        p {
+            background-color: white;
+        }
+
+        li {
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        li a:hover {
+        background-color: rgb(146, 243, 146);
+        }ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <ul>
+        <p><li><a href="../index.html">Index</a></li></p>
+    </ul>
+
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <h3><i class="fas fa-plus"></i> Lista de productos</h3>
+                </div>
+                <div class="col-4">
+                    <button type="text" class="btn btn-primary"  data-toggle="modal" data-target="#ventananuevo" >Nuevo <i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 p-2">
+                    <ul id="lista" class="list-group"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal fade " id="ventananuevo">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Agregar nuevo producto</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="forma">
+                    <div class="row">
+                        <div class="col-12 col-md-4 py-2">
+                            <input type="text" name="nombre" required class="form-control" placeholder="Nombre" aria-readonly="true">
+                        </div>
+                        <div class="col-12 col-md-4 py-2">
+                            <input type="text" name="codigo" required class="form-control" placeholder="Código">
+                        </div>
+                        <div class="col-12 col-md-4 py-2">
+                            <button type="submit" class="btn btn-primary">Agregar <i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal fade " id="ventanaeditar">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"> el producto</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="formaeditar">
+                    <div class="row">
+                        <div class="col-12 col-md-4 py-2">
+                            <input type="text" name="nombreeditar" required class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="col-12 col-md-4 py-2">
+                            <input type="text" name="codigoeditar" required class="form-control" placeholder="Código">
+                        </div>
+                        <div class="col-12 col-md-4 py-2">
+                            <input type="hidden" name="ideditar" id="ideditar">
+                            <button type="submit" class="btn btn-primary">Guardar cambios <i class="fas fa-save"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="basededatoshd.js"></script>
+    <script src="constanteshd.js"></script>
+    <script src="registrohd.js"></script>
+    <script src="mostrarregistroshd.js"></script>
+    <script src="agregarhd.js"></script>
+    <script src="actualizarhd.js"></script>
+    <script src="serviciohd.js"></script>
+   
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>     

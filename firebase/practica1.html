@@ -103,7 +103,7 @@
         // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyAiYTvoU1RhovBiclAXhn_eIpGEKf348HY",
-            authDomain: "sistemasgeo66731.firebaseapp.com",
+            authDomain: "sistemasgeo67410.firebaseapp.com",
             databaseURL: "https://sistemasgeo67410.firebaseio.com",
             projectId: "sistemasgeo67410",
             storageBucket: "sistemasgeo67410.appspot.com",
@@ -162,7 +162,7 @@
         });
 
         db.collection("productos").onSnapshot(snapshot => {
-            let changes = snapshot.docChanges();
+            let changes = snapshot.docChanwwwwwwwwwwwges();
             changes.forEach(change => {
                 if (change.type == "added") {
                     renderProductos(change.doc);
