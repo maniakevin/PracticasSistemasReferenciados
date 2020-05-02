@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 8</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+            
+            background-color: red;
+        }
+
+        #mapa {
+            width: 100%;
+            height: 1040px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+            <a href="index.html" class="w3-bar-item w3-button" id="index">Index</a>
+
+            <div class="w3-right w3-hide-small">
+                <a class="w3-bar-item" id="nombre"> Kevin Acosta </a>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <form action="">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row m-2">
+                    <div class="col-6">
+                        <h1 class="text-center" id="titulo">Idiomas</h1>
+                    </div>
+                    <div class="col-6 text-center">
+                        <select name="idioma" id="idioma" class="form-control" onchange="this.form.submit()">
+                            <option value="es" id="español">Español</option>
+                            <option value="en" id="ingles">Inglés</option>
+                            <option value="it" id="italiano">Italiano</option>
+                            <option value="zh" id="chino">Chino</option>
+                            <option value="ja" id="japones">Japonés</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div id="mapa"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        var coordenadas = {
+            lat: -31.563910, lng: 147.154312
+        }
+
+        const queryString = window.location.search;
+
+
+        const urlParams = new URLSearchParams(queryString);
+        const idioma = urlParams.get('idioma');
+
+
+        document.getElementById('idioma').value = idioma;
+
+        console.log(idioma);
+
+        var script = document.createElement('script');
+        var index = document.getElementById('index');
+        var titulo = document.getElementById('titulo');
+        var nombre = document.getElementById('nombre');
+        var italiano = document.getElementById('italiano');
+        var español = document.getElementById('español');
+        var ingles = document.getElementById('ingles');
+        var japones = document.getElementById('japones');
+        var chino = document.getElementById('chino');
+        
+        
+        if (idioma == 'es'){
+            index.textContent = "Menú";
+            nombre.textContent = "Kevin Acosta Bonilla";
+            titulo.textContent = "Idiomas en Google Maps";
+            español.textContent = "Español";
+            ingles.textContent = "Inglés";
+            italiano.textContent = "Italiano";
+            chino.textContent = "Chino";
+            japones.textContent = "Japonés";
+        
+        } else if (idioma == 'it') {
+            index.textContent = "Indice";
+            nombre.textContent = "Kevin Acosta Bonilla";
+            titulo.textContent = "Lingue su Google Maps";
+            español.textContent = "Spagnolo";
+            ingles.textContent = "Inglese";
+            italiano.textContent = "Italiano";
+            chino.textContent = "Cinese";
+            japones.textContent = "Giapponese";
+        } else if (idioma == 'en') {
+            index.textContent = "Index";
+            nombre.textContent = "Kevin Acosta Bonilla";
+            titulo.textContent = "Idioms on Google Maps";
+            español.textContent = "Spanish";
+            ingles.textContent = "English";
+            italiano.textContent = "Italian";
+            chino.textContent = "Chinese";
+            japones.textContent = "Japanese";
+        } else if (idioma == 'ja') {
+            index.textContent = "索引";
+            nombre.textContent = "ケビンアコスタボニーラ";
+            titulo.textContent = "グーグルマップの言語";
+            español.textContent = "スペイン語";
+            ingles.textContent = "英語";
+            italiano.textContent = "イタリア語";
+            chino.textContent = "中国語";
+            japones.textContent = "日本語";
+        } else if (idioma == 'zh') {
+            index.textContent = "指数";
+            nombre.textContent = "凯文·阿科斯塔·博尼利亚";
+            titulo.textContent = "谷歌地图上的语言";
+            español.textContent = "西班牙文";
+            ingles.textContent = "英文";
+            italiano.textContent = "义大利文";
+            chino.textContent = "中国人";
+            japones.textContent = "日本人";
+        }
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyASZsUNGuhRv8D5yfRC-X956JhOyduODkM&callback=iniciaMapa&language=' + idioma;
+        document.head.appendChild(script);
+
+        function iniciaMapa() {
+            var map = new google.maps.Map(
+                document.getElementById('mapa'),
+                {
+                    center: coordenadas,
+                    zoom: 3
+                }
+            );
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
