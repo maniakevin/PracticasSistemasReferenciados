@@ -12,7 +12,7 @@ const configuraMenu = (user) => {
                <p>Correo: ${ user.email}</p>
                <p>Teléfono: ${ doc.data().telefono }</p>
                <p>Dirección: ${ doc.data().direccion }</p>
-               <p>Coordenadas: ${ doc.data().coordendadas.latitude }, ${doc.data().coordendadas.longitude}</p>
+               <p>Coordenadas: ${ doc.data().coordenadas.latitude }, ${doc.data().coordendadas.longitude}</p>
            `;
            datosdelacuenta.innerHTML = html;
        });
