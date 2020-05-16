@@ -17,8 +17,8 @@ auth.onAuthStateChanged(user => {
                 });
             });
         }
-        db.collection('desayunos').onSnapshot(snapshot => {
-            obtienePlatillos(snapshot.docs);
+        db.collection('usuario').onSnapshot(snapshot => {
+            obtieneAmigos(snapshot.docs);
             configuraMenu(user);
         }, err => {
             console.log(err.message);
@@ -38,7 +38,7 @@ auth.onAuthStateChanged(user => {
     }
     else {
         console.log('Usuario salió');
-        obtienePlatillos([]);
+        obtieneAmigos([]);
         configuraMenu();
     }
 
