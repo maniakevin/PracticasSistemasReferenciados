@@ -3,66 +3,45 @@ const listaloggedin = document.querySelectorAll('.logged-in');
 const datosdelacuenta = document.querySelector('.datosdelacuenta');
 
 const configuraMenu = (user) => {
-    if(user){
-       
+    if (user) {
 
-       db.collection('usuarios').doc(user.uid).get().then( doc =>{
-           const html = `
-               <p>Nombre: ${ doc.data().nombre }</p>
+
+        db.collection('usuarios').doc(user.uid).get().then(doc => {
+            const html = `
+               <p>Nombre: ${ doc.data().nombre}</p>
                <p>Correo: ${ user.email}</p>
-               <p>Teléfono: ${ doc.data().telefono }</p>
-               <p>Dirección: ${ doc.data().direccion }</p>
-               <p>Coordenadas: ${ doc.data().coordenadas.lat } , ${doc.data().coordenadas.lng}</p>
+               <p>Teléfono: ${ doc.data().telefono}</p>
+               <p>Dirección: ${ doc.data().direccion}</p>
+               <p>Coordenadas: ${ doc.data().coordenadas.lat} , ${doc.data().coordenadas.lng}</p>
            `;
-           datosdelacuenta.innerHTML = html;
-       });
+            datosdelacuenta.innerHTML = html;
+        });
 
-       listaloggedin.forEach( item => item.style.display = 'block');
-       listaloggedout.forEach( item => item.style.display = 'none');
+        listaloggedin.forEach(item => item.style.display = 'block');
+        listaloggedout.forEach(item => item.style.display = 'none');
     }
-    else
-    {
-       datosdelacuenta.innerHTML = '';
-       listaloggedin.forEach( item => item.style.display = 'none');
-       listaloggedout.forEach( item => item.style.display = 'block');
+    else {
+        datosdelacuenta.innerHTML = '';
+        listaloggedin.forEach(item => item.style.display = 'none');
+        listaloggedout.forEach(item => item.style.display = 'block');
     }
 }
 
-const listadeplatillos = document.getElementById('listadeplatillos');
+const obtieneAmigos = (data) => {
+    var propiedades = { center: { lat: 21.152639, lng: -101.711598 }, zoom: 14 };
+    var mapa = document.getElementById("map")
+    var map = new google.maps.Map(mapa, propiedades)
 
-const obtienePlatillos = (data) =>{
+    data.forEach(doc => {
+        informacion = new google.maps.InfoWindow;
+        var pos = {
+            lat: doc.data().coordenadas.latitude,
+            lng: doc.data().coordenadas.longitude
 
-
-   if(data.length){
-       
-       let html = '';
-
-       data.forEach(doc => {
-           const platillo = doc.data();
-           console.log(platillo);
-           const columna = `
-               <div class="col-12 col-md-4">
-                   <img src="Imagenes/${platillo.imagen}" alt="${platillo.nombre}">
-                   <p>${platillo.nombre}</p>
-                   <p class="text-danger">$${platillo.precio}.00 pesos</p>
-                   <a href="https://paypal.me/maniakevin/${platillo.precio}" target="_blank">
-                       <button class="btn btn-primary">Pagar Ahora</button>
-                   </a>
-               </div>
-           `;
-   
-           html += columna;
-   
-       });
-   
-       listadeplatillos.innerHTML = html;
-
-   }
-   else{
-       listadeplatillos.innerHTML = '<p class="text-center">Ingrese con sus claves para ver los platillos.</p>';
-   }
-
-
-
+        };
+        informacion.setPosition(pos);
+        informacion.setContent(doc.data().nombre);
+        informacion.open(map);
+    });
 
 };
