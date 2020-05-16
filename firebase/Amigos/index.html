@@ -226,9 +226,15 @@
         const auth = firebase.auth();
 
         const db = firebase.firestore();
-        var propiedades = { center: { lat: 21.152639, lng: -101.711598 }, zoom: 14 };
-        var mapa = document.getElementById("map")
-        var map = new goggle.maps.Map(mapa,propiedades)
+        function iniciaMapa() {
+
+            var propiedades = { center: { lat: 21.152639, lng: -101.711598 }, zoom: 14 };
+            var mapa = document.getElementById("map")
+            var map = new goggle.maps.Map(mapa, propiedades)
+
+
+        }
+
     </script>
 
     <script src="Scripts/autorizacion.js"></script>
