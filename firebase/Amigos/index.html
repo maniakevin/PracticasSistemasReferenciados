@@ -226,14 +226,7 @@
         const auth = firebase.auth();
 
         const db = firebase.firestore();
-        function iniciaMapa() {
-
-            var propiedades = { center: { lat: 21.152639, lng: -101.711598 }, zoom: 14 };
-            var mapa = document.getElementById("map")
-            var map = new google.maps.Map(mapa, propiedades)
-
-
-        }
+        
 
     </script>
 
@@ -241,7 +234,7 @@
     <script src="Scripts/index.js"></script>
     <script src="Scripts/micuenta.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASZsUNGuhRv8D5yfRC-X956JhOyduODkM&callback=iniciaMapa"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASZsUNGuhRv8D5yfRC-X956JhOyduODkM"
         async defer></script>
 
 </body>
