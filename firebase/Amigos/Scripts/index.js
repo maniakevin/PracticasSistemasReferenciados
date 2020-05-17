@@ -35,8 +35,8 @@ const obtieneAmigos = (data) => {
     data.forEach(doc => {
         informacion = new google.maps.InfoWindow;
         var pos = {
-            lat: doc.data().coordenadas.lat,
-            lng: doc.data().coordenadas.lng
+            lat: parseFloat( doc.data().coordenadas.lat),
+            lng: parseFloat(doc.data().coordenadas.lng)
 
         };
         console.log(doc.data().coordenadas.lat)
