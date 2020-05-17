@@ -10,8 +10,8 @@ auth.onAuthStateChanged(user => {
 
                 db.collection('usuarios').doc(user.uid).update({
                     coordenadas : {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
+                        Lat: position.coords.latitude,
+                        Lng: position.coords.longitude
                     }
                 });
             });
