@@ -7,11 +7,13 @@ auth.onAuthStateChanged(user => {
         console.log('Usuario entró');
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
+
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
                 db.collection('usuarios').doc(user.uid).update({
-                    coordenadas : {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    }
+                    coordenadas: pos
                 });
             });
         }
