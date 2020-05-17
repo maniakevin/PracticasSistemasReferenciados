@@ -40,6 +40,7 @@ const obtieneAmigos = (data) => {
 
         };
         console.log(doc.data().coordenadas.lat)
+        console.log(doc.data().coordenadas.lng)
         informacion.setPosition(pos);
         informacion.setContent(doc.data().nombre);
         informacion.open(map);
