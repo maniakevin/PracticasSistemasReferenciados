@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps Options</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #mapita1, #mapita2, #mapita3, #mapita4, #mapita5, #mapita6 {
+            width: 110%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid m-2 text-center">
+        <div class="row">
+            <div class="col-12">
+                <h1>Controles del Mapa</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div id="mapita1"></div>
+                <p>Mapa con los controles estandar</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <div id="mapita2"></div>
+                <p>Mapa sin ningun control</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div id="mapita3"></div>
+                <p>Mapa con zoom desactivado</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <div id="mapita4"></div>
+                <p>Mapa con ControlOptions</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div id="mapita5"></div>
+                <p>Mapa con ControlPosition</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <div id="mapita6"></div>
+                <p>Mapa con Restricting MapBounds</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function iniciaMapa(){
+            var coordenadas = {  lat: 23.076140, lng:  -109.723198 };
+            var propiedades1 = {
+                center: coordenadas,
+                zoom: 12
+            };
+            var mapa1 = new google.maps.Map(document.getElementById('mapita1'),propiedades1);
+            var propiedades2 = {
+                center: coordenadas,
+                zoom: 12,
+                disableDefaultUI: true
+            };
+            var mapa2 = new google.maps.Map(document.getElementById('mapita2'),propiedades2);
+            var propiedades3 = {
+                center: coordenadas,
+                zoom: 12,
+                zoomControl: false,
+                scaleControl: false
+            };
+            var mapa3 = new google.maps.Map(document.getElementById('mapita3'),propiedades3);
+            var propiedades4 = {
+                center: coordenadas,
+                zoom: 12,
+                mapTypeControl: true,
+                mapTypeControlOptions : {
+                    style : google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    mapTypeIds : [ 'roadmap', 'satellite', 'terrain']
+                }
+            };
+            var mapa4 = new google.maps.Map(document.getElementById('mapita4'),propiedades4);
+            var propiedades5 = {
+                center: coordenadas,
+                zoom: 12,
+                mapTypeControl: true,
+                mapTypeControlOptions : {
+                    style : google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position : google.maps.ControlPosition.TOP_CENTER
+                },
+                zoomControl : true,
+                zoomControlOptions : {
+                    position : google.maps.ControlPosition.LEFT_CENTER
+                },
+                scaleControl : true,
+                streetViewControl: true,
+                streetViewControlOptions : {
+                    position : google.maps.ControlPosition.LEFT_TOP
+                },
+                fullscreenControl : true
+            };
+            var mapa5 = new google.maps.Map(document.getElementById('mapita5'),propiedades5);
+            var limites = {
+                north: 23.092912,
+                south: 23.058205,
+                west: -109.726199,
+                east:  -109.724110
+            }
+            var propiedades6 = {
+                center: coordenadas,
+                zoom: 12,
+                restriction: {
+                    latLngBounds : limites,
+                    strictBounds : false
+                }
+            };
+            var mapa6 = new google.maps.Map(document.getElementById('mapita6'),propiedades6);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=iniciaMapa" async defer></script>
+
+</body>
+</html>
