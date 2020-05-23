@@ -55,14 +55,13 @@
             </div>
         </div>
     </div>
-    
-
     <script>
         function iniciaMapa(){
             var coordenadas = {  lat: 23.076140, lng:  -109.723198 };
             var propiedades1 = {
                 center: coordenadas,
-                zoom: 12
+                zoom: 12,
+                zoomControl : true,
             };
             var mapa1 = new google.maps.Map(document.getElementById('mapita1'),propiedades1);
             var propiedades2 = {
